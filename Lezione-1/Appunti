@@ -1,1 +1,78 @@
-Ciao 
+Per ogni argomento verrà presentatom l'argomento da risolvere di cui poi dovremo dare una relazione
+
+Introduzione su C
+Il C è efficente e anche se non sempre è portabile su tutti i sistemi su cui è compilato.
+Un programma C è modulare siccome formato da più blocchi (funzioni).
+Il PREPROCESSORE è un estensione del C che permette di definire delle costanti (#define) o includere file (#include) o ancore di effettuare macro sostituzioni #CANE { codice da eseguite }. Sarà poi compito effettuare la sostituzione delle macro, questo ultimo discorso serve quando conviene risparmiare tempo nel non chiamare una funzione.
+Le costanti defnite a livello del preprocessore sono disponibili a tutto il programma, mentre le costanti definite con il modificatore const sono costanti locali di una funzione che hanno scope di una qualsiasi altra variabile.
+<EXCURSUS>
+La mascera di rete è una maschera di bit dove i primi 3 gruppi da 8 bit sono settati ad 1 mentre l'ultimo gruppo è a 0, in questo modo posso ricavare solo l'indirizzo di rete senza il numero del PC.
+
+CHIAMATE A FUNZIONI
+Quando chiamo una funzione il programma si interrompe e viene chiamata la funzione associando e passando i parametri attraverso una procedura chiamata binding. La nuova funzione viene allocato sullo stack un nuovo record di attivazione con le variabili locali, l'indirizzo di ritorno della funzione.  
+
+Struttura MAKEFILE
+– Target : Source files
+\t Command(s)
+Il makefile crea una struttura ad albero che se visitata dal basso mi permette di ricompilare solo ciò che è necessario e alla fine di linkare tutto (operazione meno dispendiosa).
+La prima regola è quella che mi genera il progetto finale, quelle successive sono quelle che mi generano i file sorgente di cui ho bisogno per generare il mio primo target.
+
+DEBUGGER GDB
+Mi permette di eseguire passo passo un programma in modo da capire cosa non va.
+
+Oer provare creo un sorgente 
+	gedit prova.c & 
+La & Lancia in bg gedit senza occupare la console
+Per avviare un programma attraverso il debugger uso 
+	gdb <nome programma>
+Per fermare un programma posso inserire un breakpoint ossia un punto in cui il debugger si ferma nell'eseguire il programma.
+Per aggiungere un breakpoint uso (uno dei seguenti)
+	break FUNCTION
+	break LINENUM
+	break FILENAME:LINENUM
+I break possono essere condizionali (es. se voglio fermare un for ad una certa iterazione), posso fare come prima ma aggiungendo if<espressione>
+	break LINENUM if b==10
+Per sapere quanti breakpoint ho messo uso il comando info seguito dal parametro breakpoints
+	info breakpoints
+Per cancellare il breakpoint uso clear che funziona con gli stessi parametri di break
+	clear FUNCTION
+	clear LINENUM
+	clear FILENAME:LINENUM
+Un comando più generico posso usare delete che prende come parametro l'indice del breakpoint inserito (Num che vedo nelle info)
+	delete 2
+Per eseguire un programma dopo aver inserito i breakpoint uso il comando run
+A questo punto posso eseguire uno "stepover" ossia una istruzione alla volta e la chiamata a funzione è eseguita come un istruzione sola (salta la funzione)
+Per eseguire questo tipo di operazione uso il comando 
+	next
+Per poter entrare nella funzione devo eseguire il comando
+	step
+Next mi serve per eseguire uno step over nel caso io abbia funzioni di libreria come printf
+Per continuare l esecuzione in automatico fino al prossimo breakpoint eseguo il comando 
+	continue
+Un altra funzionalità del debugger è poter esaminare i dati attraverso diversi comandi
+	print <espressione>
+	ES. 
+		print a
+		print b
+		print (a+b)+c
+		print (a==b) --> stampa un booleano
+	Posso anche modificare le variabili del mio programma
+	print b=100 // Assegna 100 alla variabile b e la stampa ma b sarà modificata 					direttamente nel programma
+	Con il comando print posso solo vedere variabili nel mio scope
+Se volessi fare il monitoraggio delle mie variabili posso usare il comando
+	display <variabile>
+	ES.
+		display a
+		display b
+Ogni diaplay che eseguo aggiunge un display per la variabili passate come parametro al comando e verranno mostrati al raggiungimento di ogni breakpoint (SE QUELLE VARIABILI SONO NELLO SCOPE QUINDIN SE ENTRO IN UNA FUNZIONE DEVO AGGIUNGERE DISPLAY)
+Per rimuovere dei display userò il comando
+	undisplay <Num>
+Esso riceve come parametro l indice del display da eliminare (Num) visto dal comando
+	info display
+Se voglio vedere i record di attivazione presenti sullo stack uso il comando
+	backtrace
+
+SU CODEBLOCKS
+Su codeblocks  i breakpoint si aggiungono direttamente sulla linea con tasto destro sul numero della linea.
+Per creare un breakpoint condizionale clicco tasto destro sul breakpoint --> edit breakpoint e seleziono espressione vera.
+In alto a destra posso cliccare sull icona "Debugging Windows" e se clicco su watches posso avere automaticamente i display come prima da linea di comando. Allo stesso modo posso anche aggiungere la finestra "Call stack" che mi fa vedere i record di attivazione sullo stack.
