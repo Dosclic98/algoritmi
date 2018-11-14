@@ -8,13 +8,14 @@ int emptyL(Lista* l){
 	return (l == NULL);
 }
 
-Elemento primo(Lista* l){
+Elemento* primo(Lista* l){
 	if(l != NULL){
 		return (l->inf);
 	}
+	return NULL;
 }
 
-Lista* creaNodo(Elemento el){
+Lista* creaNodo(Elemento* el){
 	Lista* l;
 	
 	l = (Lista*) malloc(sizeof(Lista));
@@ -31,13 +32,13 @@ void visualizza_lista(Lista* l){
 	
 	printf("\n lista: \n");
 	while(p != NULL){
-		printf("\t %d \n", p->inf);
+		printf("\t %d, %c \n", p->inf->valore, p->inf->seme);
 		p = p->next;
 	}
 	printf("NULL\n\n");
 }
 
-Lista* inserisci(Elemento el, Lista* l){
+Lista* inserisci(Elemento* el, Lista* l){
 	Lista* l1;
 	l1 = creaNodo(el);
 	
@@ -52,6 +53,7 @@ Lista* rimuovi(Lista* lptr){
 	if(lptr != NULL){
 		Lista* l = lptr;
 		lptr = lptr->next;
+		free(l->inf);
 		free(l);
 	}
 	

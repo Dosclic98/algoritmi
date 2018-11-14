@@ -10,16 +10,16 @@ int emptyC(Coda* c){
 	return emptyL(c->primo);
 }
 
-Elemento first(Coda* c){
+Elemento* first(Coda* c){
 	return primo(c->primo);
 }
 
-void enqueue(Elemento el, Coda* c){
+void enqueue(Elemento* el, Coda* c){
 	Lista* l;
 	l = creaNodo(el);
 	
 	if(l != NULL){
-		if(emptyC(*c)){
+		if(emptyC(c)){
 			c->primo = l;
 			c->ultimo = l;
 		}
@@ -30,12 +30,13 @@ void enqueue(Elemento el, Coda* c){
 	}
 }
 
-Elemento dequeue(Coda* c){
-	Elemento el;
+Elemento* dequeue(Coda* c){
+	Elemento* el;
 	
 	if(!emptyC(c)){
 		el = first(c);
 		c->primo = rimuovi(c->primo);
 		return el;
 	}
+	return NULL;
 }
