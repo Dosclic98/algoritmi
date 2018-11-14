@@ -7,6 +7,11 @@
 #include <time.h>
 #include <assert.h>
 
+#define CUORI   'c'
+#define QUADRI  'q'
+#define FIORI   'f'
+#define PICCHE  'p'
+
 typedef struct elemento{
 	int valore;
 	char seme;
