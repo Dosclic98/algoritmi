@@ -4,3 +4,4 @@ typedef struct coda{
 	Lista* primo;
 	Lista* ultimo;
 } Coda;
+
