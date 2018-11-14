@@ -14,15 +14,15 @@ typedef struct elemento{
 }Elemento;
 
 typedef struct Nodo_Lista{
-	Elemento inf;
+	Elemento* inf;
 	struct Nodo_Lista* next;
 } Lista;
 
 Lista* makeLista();
 int emptyL(Lista* l);
-Elemento primo(Lista* l);
-Lista* creaNodo(Elemento el);
+Elemento* primo(Lista* l);
+Lista* creaNodo(Elemento* el);
 void visualizza_lista(Lista* l);
-Lista* inserisci(Elemento el, Lista* l);
+Lista* inserisci(Elemento* el, Lista* l);
 Lista* rimuovi(Lista* lptr);
 
