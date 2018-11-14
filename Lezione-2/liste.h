@@ -3,14 +3,19 @@
 #include <string.h>
 #include <time.h>
 
+#define CUORI   'c'
+#define QUADRI  'q'
+#define FIORI   'f'
+#define PICCHE  'p'
+
 typedef struct elemento{
-	int campo1;
-	char campo2[20];
+	int valore;
+	char seme;
 }Elemento;
 
 typedef struct Nodo_Lista{
 	Elemento inf;
-	struct Nodo_Lista;
+	struct Nodo_Lista* next;
 } Lista;
 
 Lista* makeLista();
