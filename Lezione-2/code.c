@@ -6,6 +6,13 @@ Coda* makeCoda(){
 	return c;
 }
 
+void distruggiCoda(Coda* c) {
+	while(c->primo != NULL) {
+		c->primo = rimuovi(c->primo);
+	}
+	c->ultimo = NULL;
+}
+
 int emptyC(Coda* c){
 	return emptyL(c->primo);
 }
