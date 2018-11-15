@@ -6,7 +6,7 @@ Coda* creaCarteSeme(seme_t seme) {
 	Coda* retn = makeCoda();
 	Elemento* newEl;
 	
-	for(int i=0; i < N_CARTE_PER_SEME; i+=1) {
+	for(int i=1; i <= N_CARTE_PER_SEME; i+=1) {
 		newEl = malloc(sizeof(Elemento));
 		newEl->valore = i;
 		newEl->seme = seme;
@@ -24,8 +24,6 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	 /* "ottimizzazione" necessaria: se il resto della funzione fosse
 	  * eseguito, potrebbe esserci un U.B. nella fase di randomizzazione */
 	if(sz == 0) return;
-	
-	Elemento cpy;
 
 	 // array di Elemento*
 	Elemento** elementi = malloc(sizeof(Elemento*) * sz);
@@ -40,13 +38,17 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	
 	/* seleziona una carta, e effettua swap con elementi a caso nell'array;
 	 * ricrea la coda nel frattempo */
-	 // random leggermente inaffidabile, basato sull'allocazione dinamica
-	srand((int unsigned)(size_t) elementi);
+	srand(time(NULL));
+	int rnd1 = 0;
+	int rnd2 = 0;
 	for(int i=0; i<sz; i+=1) {
-		int rnd = rand() % sz;
-		cartaPresa = elementi[rnd];
-		elementi[rnd] = elementi[i];
-		elementi[i] = cartaPresa;
+		rnd1 = rand() % sz;
+		rnd2 = rand() % sz;
+		cartaPresa = elementi[rnd1];
+		elementi[rnd1] = elementi[rnd2];
+		elementi[rnd2] = cartaPresa;
+	}
+	for(int i=0; i<sz; i+=1){
 		enqueue(elementi[i], mazzo);
 	}
 }
