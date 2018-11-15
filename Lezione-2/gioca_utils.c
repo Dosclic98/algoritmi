@@ -51,5 +51,20 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	for(int i=0; i<sz; i+=1){
 		enqueue(elementi[i], mazzo);
 	}
+	free(elementi);
+}
+
+void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
+	for(int j=0;j<3;j++){
+		for(int i=0; i<sz; i++){
+			Elemento* carta = dequeue(mazzo);
+			push(carta, giocatori[i]);
+		}
+	}
+}
+
+Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro){
+	Elemento* carta = pop(&giocatore);
+	return inserisci(carta, mazzoCentro);
 }
 

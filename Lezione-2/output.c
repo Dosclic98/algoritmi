@@ -28,5 +28,6 @@ void fprintGiocatori(FILE* f, Pila** giocatori, size_t sz){
 }
 
 void fprintTavolo(FILE* f, Lista* tavolo){
-	
+	printf("Carte in tavola:\n");
+	fprintLista(f,tavolo);
 }
