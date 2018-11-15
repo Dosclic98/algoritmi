@@ -3,12 +3,12 @@
 void fprintLista(FILE* f, Lista* lista) {
 	printf("[");
 	if(lista != NULL){
-		fprintf(f,"%d di %c", lista->inf->valore, lista->inf->seme);
+		fprintf(f,"%d%c", lista->inf->valore, lista->inf->seme);
 		lista = lista->next;
 	}
 	while(lista != NULL)
 	{
-		fprintf(f,", %d di %c", lista->inf->valore, lista->inf->seme);
+		fprintf(f,", %d%c", lista->inf->valore, lista->inf->seme);
 		lista = lista->next;
 	}
 	printf("]\n");
