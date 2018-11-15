@@ -38,12 +38,15 @@ void enqueue(Elemento* el, Coda* c){
 }
 
 Elemento* dequeue(Coda* c){
+	Elemento* cpy = malloc(sizeof(Elemento));
 	Elemento* el;
 	
 	if(!emptyC(c)){
 		el = first(c);
+		cpy->valore = el->valore;
+		cpy->seme = el->seme;
 		c->primo = rimuovi(c->primo);
-		return el;
+		return cpy;
 	}
 	return NULL;
 }

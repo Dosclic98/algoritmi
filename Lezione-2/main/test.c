@@ -10,6 +10,7 @@ int main(int argn, char** args) {
 	// da aggiustare mix
 	mixCarte(mazzo, N_CARTE_PER_SEME);
 	fprintMazzo(stdout, mazzo);
+	distruggiCoda(mazzo);
 	
 	exit(EXIT_SUCCESS);
 }

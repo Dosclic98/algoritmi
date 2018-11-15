@@ -1,4 +1,4 @@
-CFLAGS=-std=c99 -Wall -I.
+CFLAGS=-std=c99 -Wall -I. -g
 ALL_OBJS=$(patsubst %.c, %.o, $(wildcard *.c))
 
 make_exec: gioca test
