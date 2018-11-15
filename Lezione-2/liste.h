@@ -1,12 +1,11 @@
+ #ifndef LISTE_H
+ #define LISTE_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-
-#define CUORI   'c'
-#define QUADRI  'q'
-#define FIORI   'f'
-#define PICCHE  'p'
+#include <assert.h>
 
 typedef struct elemento{
 	int valore;
@@ -26,3 +25,4 @@ void visualizza_lista(Lista* l);
 Lista* inserisci(Elemento* el, Lista* l);
 Lista* rimuovi(Lista* lptr);
 
+ #endif
