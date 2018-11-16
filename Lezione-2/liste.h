@@ -1,7 +1,11 @@
+ #ifndef LISTE_H
+ #define LISTE_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 
 #define CUORI   'c'
 #define QUADRI  'q'
@@ -25,4 +29,6 @@ Lista* creaNodo(Elemento* el);
 void visualizza_lista(Lista* l);
 Lista* inserisci(Elemento* el, Lista* l);
 Lista* rimuovi(Lista* lptr);
+void distruggiLista(Lista** lista);
 
+ #endif

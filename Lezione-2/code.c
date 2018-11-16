@@ -6,6 +6,13 @@ Coda* makeCoda(){
 	return c;
 }
 
+void distruggiCoda(Coda* c) {
+	while(c->primo != NULL) {
+		c->primo = rimuovi(c->primo);
+	}
+	c->ultimo = NULL;
+}
+
 int emptyC(Coda* c){
 	return emptyL(c->primo);
 }
@@ -31,12 +38,15 @@ void enqueue(Elemento* el, Coda* c){
 }
 
 Elemento* dequeue(Coda* c){
+	Elemento* cpy = malloc(sizeof(Elemento));
 	Elemento* el;
 	
 	if(!emptyC(c)){
 		el = first(c);
+		cpy->valore = el->valore;
+		cpy->seme = el->seme;
 		c->primo = rimuovi(c->primo);
-		return el;
+		return cpy;
 	}
 	return NULL;
 }
