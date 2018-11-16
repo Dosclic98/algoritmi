@@ -2,17 +2,19 @@
 
 
 
-Coda* creaCarteSeme(seme_t seme) {
+Coda* creaCarteMazzo() {
 	Coda* retn = makeCoda();
 	Elemento* newEl;
-	
-	for(int i=1; i <= N_CARTE_PER_SEME; i+=1) {
-		newEl = malloc(sizeof(Elemento));
-		newEl->valore = i;
-		newEl->seme = seme;
-		enqueue(newEl, retn);
+	seme_t semi[4] = {CUORI, QUADRI, FIORI, PICCHE};
+	for(int j=0;j<4;j+=1)
+	{
+		for(int i=1; i <= N_CARTE_PER_SEME; i+=1) {
+			newEl = malloc(sizeof(Elemento));
+			newEl->valore = i;
+			newEl->seme = semi[j];
+			enqueue(newEl, retn);
+		}
 	}
-	
 	return retn;
 }
 
@@ -64,7 +66,16 @@ void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
 }
 
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro){
-	Elemento* carta = pop(&giocatore);
+	Elemento* carta = pop(giocatore);
 	return inserisci(carta, mazzoCentro);
+}
+
+Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
+	for(int i=0; i<4; i+=1)
+	{
+		Elemento* carta = dequeue(Mazzo);
+		tavolo = inserisci(carta, tavolo);
+	}
+	return tavolo;
 }
 

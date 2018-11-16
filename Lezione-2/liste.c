@@ -59,4 +59,12 @@ Lista* rimuovi(Lista* lptr){
 	
 	return lptr;
 }
- 
+
+void distruggiLista(Lista** lista){
+	while((*lista)!=NULL)
+	{
+		Lista* tmp = (*lista)->next;
+		rimuovi(*lista);
+		(*lista) = tmp;
+	}
+}

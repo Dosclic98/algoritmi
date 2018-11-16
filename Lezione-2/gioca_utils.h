@@ -11,9 +11,9 @@
 
 typedef char seme_t;
 
-Coda* creaCarteSeme(seme_t seme);
+Coda* creaCarteMazzo();
 Elemento* creaElemento(seme_t seme, int val);
 void mixCarte(Coda* mazzo, size_t sz); // Lista -> Array; si randomizza O(n); Array -> Lista
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz);
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro);
-
+Lista* initTavolo(Lista* tavolo, Coda* Mazzo);

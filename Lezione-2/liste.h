@@ -29,5 +29,6 @@ Lista* creaNodo(Elemento* el);
 void visualizza_lista(Lista* l);
 Lista* inserisci(Elemento* el, Lista* l);
 Lista* rimuovi(Lista* lptr);
+void distruggiLista(Lista** lista);
 
  #endif

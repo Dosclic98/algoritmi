@@ -21,7 +21,21 @@ Elemento* top(Pila* p){
 	return NULL;
 }
 
-Elemento* pop(Pila** p){
+Elemento* pop(Pila* p){
+	Elemento* cpy = malloc(sizeof(Elemento));
+	Elemento* el;
+	
+	if(!emptyP(p)){
+		el = top(p);
+		cpy->valore = el->valore;
+		cpy->seme = el->seme;
+		p->primo = rimuovi(p->primo);
+		return cpy;
+	}
+	return NULL;
+
+
+/*
 	Elemento* el;
 	if(!emptyP(*p)) {
 		el = primo((*p)->primo);
@@ -30,4 +44,14 @@ Elemento* pop(Pila** p){
 		return el;
 	}
 	return NULL;
+*/
+}
+
+void distruggiPila(Pila* p)
+{
+	while(p->primo != NULL) {
+		p->primo = rimuovi(p->primo);
+	}
+	p->ultimo = NULL;	
+	free(p);
 }
