@@ -3,6 +3,8 @@ ALL_OBJS=$(patsubst %.c, %.o, $(wildcard *.c))
 
 make_exec: gioca test
 
+.PRECIOUS: %.o
+
 %: $(ALL_OBJS) main/%.c
 	gcc $(CFLAGS) $^ -o $@
 
