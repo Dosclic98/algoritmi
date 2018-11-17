@@ -23,8 +23,11 @@ int main(int argn, char** args) {
 	mixCarte(mazzo, 4*N_CARTE_PER_SEME);
 	fprintMazzo(stdout, mazzo);
 	
+	printf("Disposizione delle 4 carte sul tavolo\n");
 	tavolo = initTavolo(tavolo, mazzo);
 	fprintTavolo(stdout, tavolo);
+	
+	pause();
 	
 	for(int i = 0; i<3; i+=1){
 		assegnaCarte(mazzo,giocatori,4);
@@ -38,7 +41,9 @@ int main(int argn, char** args) {
 			}
 			fprintMazzo(stdout, mazzo);
 			fprintGiocatori(stdout,giocatori,4);
-			fprintTavolo(stdout, tavolo);			
+			fprintTavolo(stdout, tavolo);
+			// Ferma sempre il gioco tranne all ultima giocata dell'ultima mano			
+			if(i!=2 || j!=2) pause();
 		}
 	}
 	

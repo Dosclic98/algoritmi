@@ -26,34 +26,32 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	 /* "ottimizzazione" necessaria: se il resto della funzione fosse
 	  * eseguito, potrebbe esserci un U.B. nella fase di randomizzazione */
 	if(sz == 0) return;
-
-	 // array di Elemento*
-	Elemento** elementi = malloc(sizeof(Elemento*) * sz);
-	Elemento* cartaPresa;
 	
-	// copia tutte le carte all'interno dell'array
-	for(int i=0; i<sz; i+=1) {
-		cartaPresa = dequeue(mazzo);
-		assert(cartaPresa != NULL);
-		elementi[i] = cartaPresa;
-	}
-	
-	/* seleziona una carta, e effettua swap con elementi a caso nell'array;
-	 * ricrea la coda nel frattempo */
 	srand(time(NULL));
 	int rnd1 = 0;
 	int rnd2 = 0;
-	for(int i=0; i<sz; i+=1) {
+	
+	Lista* tmp1 = NULL;
+	Lista* tmp2 = NULL;
+	
+	Elemento* tmp = NULL;
+	for(int i=0; i<sz; i+=1){
+		tmp1 = mazzo->primo;
+		tmp2 = mazzo->primo;
+		
 		rnd1 = rand() % sz;
 		rnd2 = rand() % sz;
-		cartaPresa = elementi[rnd1];
-		elementi[rnd1] = elementi[rnd2];
-		elementi[rnd2] = cartaPresa;
+		
+		for(int j=0; j<rnd1; j+=1){
+			tmp1 = tmp1->next;
+		}
+		for(int k=0; k<rnd2; k+=1){
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp1->inf;
+		tmp1->inf = tmp2->inf;
+		tmp2->inf = tmp;
 	}
-	for(int i=0; i<sz; i+=1){
-		enqueue(elementi[i], mazzo);
-	}
-	free(elementi);
 }
 
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
@@ -79,3 +77,7 @@ Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	return tavolo;
 }
 
+void pause(){
+	printf("\nPremere Invio per continuare:\n");
+	getchar();
+}
