@@ -1,7 +1,7 @@
 CFLAGS=-std=c99 -Wall -I. -g
 ALL_OBJS=$(patsubst %.c, %.o, $(wildcard *.c))
 
-make_exec: gioca test
+make_exec: gioca
 
 .PRECIOUS: %.o
 
@@ -10,4 +10,3 @@ make_exec: gioca test
 
 %.o: %.c
 	gcc $(CFLAGS) $< -c -o $@
-
