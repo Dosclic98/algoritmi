@@ -2,3 +2,5 @@
 gioca
 test
 *.o
+bin/
+build/
