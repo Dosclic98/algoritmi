@@ -1,14 +1,6 @@
 #include "output.h"
 #include "gioca_utils.h"
 
-/* Alloca lo spazio necessario per gli struct delle pile
- * relative a ciascun giocatore */
-static void inizializzaGiocatori(Pila** giocatori){
-	for(int i=0;i<4;i+=1){
-		giocatori[i] = makePila();
-	}
-}
-
 int main(int argn, char** args) {
 	Coda* mazzo = creaCarteMazzo();
 

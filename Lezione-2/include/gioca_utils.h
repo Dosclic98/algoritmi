@@ -16,4 +16,5 @@ void mixCarte(Coda* mazzo, size_t sz); // Lista -> Array; si randomizza O(n); Ar
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz);
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro);
 Lista* initTavolo(Lista* tavolo, Coda* Mazzo);
+void inizializzaGiocatori(Pila** giocatori);
 void pause();

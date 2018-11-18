@@ -83,6 +83,14 @@ Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	return tavolo;
 }
 
+/* Alloca lo spazio necessario per gli struct delle pile
+ * relative a ciascun giocatore */
+void inizializzaGiocatori(Pila** giocatori){
+	for(int i=0;i<4;i+=1){
+		giocatori[i] = makePila();
+	}
+}
+
 /* Mette in pausa il processo, finche' non viene dato un input */
 void pause(){
 	printf("\nPremere Invio per continuare:\n");
