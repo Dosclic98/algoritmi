@@ -18,10 +18,6 @@ Coda* creaCarteMazzo() {
 	return retn;
 }
 
-void printElem(Elemento* elem) {
-	printf("%d, %c\n", elem->valore, elem->seme);
-}
-
 void mixCarte(Coda* mazzo, size_t sz) {
 	 /* "ottimizzazione" necessaria: se il resto della funzione fosse
 	  * eseguito, potrebbe esserci un U.B. nella fase di randomizzazione */
