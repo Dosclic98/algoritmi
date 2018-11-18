@@ -1,5 +1,6 @@
 #include "output.h"
 
+
 void fprintLista(FILE* f, Lista* lista) {
 	printf("[");
 	if(lista != NULL){

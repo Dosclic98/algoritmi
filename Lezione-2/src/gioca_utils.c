@@ -1,7 +1,8 @@
 #include "gioca_utils.h"
 
 
-
+/* Alloca lo spazio di 40 elementi (10 per ogni seme) e li
+ * inizializza; dopodiche' restituisce la coda creata */
 Coda* creaCarteMazzo() {
 	Coda* retn = makeCoda();
 	Elemento* newEl;
@@ -22,26 +23,29 @@ void printElem(Elemento* elem) {
 	printf("%d, %c\n", elem->valore, elem->seme);
 }
 
+/* Mescola le carte, con il seguente algoritmo:
+ * 1. si selezionano due indici, rnd1 e rnd2;
+ * 2. si scorre ciascuna lista finche' non si trova l'elemento
+ *    corrispondente;
+ * 3. si scambiano i due elementi. */
 void mixCarte(Coda* mazzo, size_t sz) {
-	 /* "ottimizzazione" necessaria: se il resto della funzione fosse
-	  * eseguito, potrebbe esserci un U.B. nella fase di randomizzazione */
 	if(sz == 0) return;
-	
+
 	srand(time(NULL));
 	int rnd1 = 0;
 	int rnd2 = 0;
-	
+
 	Lista* tmp1 = NULL;
 	Lista* tmp2 = NULL;
-	
+
 	Elemento* tmp = NULL;
 	for(int i=0; i<sz; i+=1){
 		tmp1 = mazzo->primo;
 		tmp2 = mazzo->primo;
-		
+
 		rnd1 = rand() % sz;
 		rnd2 = rand() % sz;
-		
+
 		for(int j=0; j<rnd1; j+=1){
 			tmp1 = tmp1->next;
 		}
@@ -54,6 +58,8 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	}
 }
 
+/* Estrae 3 elementi dalla coda, e li distribuisce uno ad uno
+ * alle pile */
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
 	for(int j=0;j<3;j++){
 		for(int i=0; i<sz; i++){
@@ -63,11 +69,15 @@ void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
 	}
 }
 
+/* Estrae un elemento dalla pila, lo inserisce nella lista
+ * e restituisce l'elemento inserito */
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro){
 	Elemento* carta = pop(giocatore);
 	return inserisci(carta, mazzoCentro);
 }
 
+/* Estrae 4 elementi dalla coda (2o argomento), e li inserisce
+ * nella lista (1o argomento) */
 Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	for(int i=0; i<4; i+=1)
 	{
@@ -77,6 +87,7 @@ Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	return tavolo;
 }
 
+/* Mette in pausa il processo, finche' non viene dato un input */
 void pause(){
 	printf("\nPremere Invio per continuare:\n");
 	getchar();
