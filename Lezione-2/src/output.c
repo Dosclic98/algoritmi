@@ -24,7 +24,7 @@ void fprintGiocatori(FILE* f, Pila** giocatori, size_t sz){
 	for(int i=0;i<sz;i++)
 	{
 		fprintf(f,"Mano giocatore %d:\n", i+1);
-		fprintLista(f,giocatori[i]->primo);
+		fprintLista(f,giocatori[i]->cima);
 	}
 }
 

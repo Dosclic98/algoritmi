@@ -4,8 +4,7 @@
 #include "liste.h"
 
 typedef struct pila {
-	Lista* primo;
-	Lista* ultimo;
+	Lista* cima;
 } Pila;
 
 Pila* makePila();
