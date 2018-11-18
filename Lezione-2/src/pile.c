@@ -5,26 +5,26 @@
  * che contiene i due puntatori 'inizio' e 'fine' */
 Pila* makePila() {
 	Pila* newP = malloc(sizeof(Pila));
-	newP->primo = newP->ultimo = makeLista();
+	newP->cima = makeLista();
 	return newP;
 }
 
 /* Restituisce un numero diverso da '0' se la pila e' vuota,
  * '0' altrimenti */
 int emptyP(Pila* p) {
-	return emptyL(p->primo);
+	return emptyL(p->cima);
 }
 
 /* Aggiunge un elemento alla testa della pila */
 void push(Elemento* el, Pila* p) {
-	p->primo = inserisci(el, p->primo);
+	p->cima = inserisci(el, p->cima);
 }
 
 /* Restituisce il primo elemento da prelevare dalla pila, o
  * 'NULL' se la pila e' vuota */
 Elemento* top(Pila* p){
 	if(!emptyP(p))
-		return (p->primo->inf);
+		return (p->cima->inf);
 	return NULL;
 }
 
@@ -39,7 +39,7 @@ Elemento* pop(Pila* p){
 		el = top(p);
 		cpy->valore = el->valore;
 		cpy->seme = el->seme;
-		p->primo = rimuovi(p->primo);
+		p->cima = rimuovi(p->cima);
 		return cpy;
 	}
 	return NULL;
@@ -50,9 +50,8 @@ Elemento* pop(Pila* p){
  * lo spazio allocato per la coda stessa */
 void distruggiPila(Pila* p)
 {
-	while(p->primo != NULL) {
-		p->primo = rimuovi(p->primo);
+	while(p->cima != NULL) {
+		p->cima = rimuovi(p->cima);
 	}
-	p->ultimo = NULL;
 	free(p);
 }
