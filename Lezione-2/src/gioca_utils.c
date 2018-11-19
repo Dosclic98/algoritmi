@@ -2,7 +2,7 @@
 
 
 /* Alloca lo spazio di 40 elementi (10 per ogni seme) e li
- * inizializza; dopodiche' restituisce la coda creata */
+ * inizializza, dopodiche' restituisce la coda creata */
 Coda* creaCarteMazzo() {
 	Coda* retn = makeCoda();
 	Elemento* newEl;
@@ -54,8 +54,8 @@ void mixCarte(Coda* mazzo, size_t sz) {
 	}
 }
 
-/* Estrae 3 elementi dalla coda, e li distribuisce uno ad uno
- * alle pile */
+/* Estrae 4 elementi dalla coda, e li distribuisce uno ad uno
+ * alle pile (giocatori), ripetendo il ciclo 3 volte */
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
 	for(int j=0;j<3;j++){
 		for(int i=0; i<sz; i++){
@@ -65,15 +65,15 @@ void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz){
 	}
 }
 
-/* Estrae un elemento dalla pila, lo inserisce nella lista
- * e restituisce l'elemento inserito */
+/* Estrae un elemento dalla pila (giocatore), lo inserisce nella lista
+ * (tavolo) e restituisce l'elemento inserito */
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro){
 	Elemento* carta = pop(giocatore);
 	return inserisci(carta, mazzoCentro);
 }
 
-/* Estrae 4 elementi dalla coda (2o argomento), e li inserisce
- * nella lista (1o argomento) */
+/* Estrae 4 elementi dalla coda (mazzo), e li inserisce
+ * nella lista (tavolo) */
 Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	for(int i=0; i<4; i+=1)
 	{
@@ -83,7 +83,7 @@ Lista* initTavolo(Lista* tavolo, Coda* Mazzo){
 	return tavolo;
 }
 
-/* Alloca lo spazio necessario per gli struct delle pile
+/* Alloca lo spazio necessario alle pile
  * relative a ciascun giocatore */
 void inizializzaGiocatori(Pila** giocatori){
 	for(int i=0;i<4;i+=1){

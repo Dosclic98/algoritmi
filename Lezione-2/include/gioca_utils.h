@@ -12,7 +12,7 @@
 typedef char seme_t;
 
 Coda* creaCarteMazzo();
-void mixCarte(Coda* mazzo, size_t sz); // Lista -> Array; si randomizza O(n); Array -> Lista
+void mixCarte(Coda* mazzo, size_t sz);
 void assegnaCarte(Coda* mazzo, Pila** giocatori, size_t sz);
 Lista* giocaCarta(Pila* giocatore, Lista* mazzoCentro);
 Lista* initTavolo(Lista* tavolo, Coda* Mazzo);

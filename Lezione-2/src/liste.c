@@ -11,8 +11,8 @@ int emptyL(Lista* l){
 	return (l == NULL);
 }
 
-/* Restituisce un numero diverso da '0' se la lista e' vuota,
- * '0' altrimenti */
+/* Restituisce il campo informativo (puntatore ad elemento) 
+ * del primo nodo della lista (NULL se la lista è vuota)*/
 Elemento* primo(Lista* l){
 	if(l != NULL){
 		return (l->inf);
@@ -30,19 +30,6 @@ Lista* creaNodo(Elemento* el){
 		l->next = NULL;
 	}
 	return l;
-}
-
-/* ----------------------------------------------------------------------------------------------------------------- */
-void visualizza_lista(Lista* l){
-	Lista* p;
-	p = l;
-
-	printf("\n lista: \n");
-	while(p != NULL){
-		printf("\t %d, %c \n", p->inf->valore, p->inf->seme);
-		p = p->next;
-	}
-	printf("NULL\n\n");
 }
 
 /* Aggiunge un elemento ad una lista, e ne restituisce la testa */

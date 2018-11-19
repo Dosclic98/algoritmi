@@ -15,7 +15,7 @@ int emptyP(Pila* p) {
 	return emptyL(p->cima);
 }
 
-/* Aggiunge un elemento alla testa della pila */
+/* Aggiunge un elemento sulla cima della pila */
 void push(Elemento* el, Pila* p) {
 	p->cima = inserisci(el, p->cima);
 }
@@ -28,7 +28,7 @@ Elemento* top(Pila* p){
 	return NULL;
 }
 
-/* Rimuove un elemento dalla testa della coda, e restituisce
+/* Rimuove un elemento dalla cima della pila, e restituisce
  * una copia dell'elemento rimosso (l'elemento originale viene
  * deallocato) */
 Elemento* pop(Pila* p){
@@ -46,8 +46,7 @@ Elemento* pop(Pila* p){
 
 }
 
-/* Dealloca ogni elemento contenuto nella pila, ma preserva
- * lo spazio allocato per la coda stessa */
+/* Dealloca ogni elemento contenuto nella pila (ma non il puntatore a Pila)*/
 void distruggiPila(Pila* p)
 {
 	while(p->cima != NULL) {

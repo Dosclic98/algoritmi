@@ -1,7 +1,7 @@
 #include "code.h"
 
 
-/* Alloca lo spazio necessario per gli struct della coda,
+/* Alloca lo spazio necessario per lo struct della coda,
  * che contiene i due puntatori 'inizio' e 'fine' */
 Coda* makeCoda(){
 	Coda* c = (Coda*)malloc(sizeof(Coda));
@@ -10,7 +10,7 @@ Coda* makeCoda(){
 }
 
 /* Dealloca ogni elemento contenuto nella coda, ma preserva
- * lo spazio allocato per la coda stessa */
+ * lo spazio allocato per la coda stessa (Coda*) */
 void distruggiCoda(Coda* c) {
 	while(c->primo != NULL) {
 		c->primo = rimuovi(c->primo);
@@ -25,12 +25,12 @@ int emptyC(Coda* c){
 }
 
 /* Restituisce il primo elemento da prelevare dalla coda, o
- * 'NULL' se la pila e' vuota */
+ * 'NULL' se la coda e' vuota */
 Elemento* first(Coda* c){
 	return primo(c->primo);
 }
 
-/* Aggiunge un elemento alla coda della... coda */
+/* Aggiunge un elemento alla fine della coda */
 void enqueue(Elemento* el, Coda* c){
 	Lista* l;
 	l = creaNodo(el);
