@@ -33,9 +33,13 @@ int partition(int* A, int begin, int end){
 		while(A[r] > pivot) r=r-1;
 		while((A[l]<=pivot) && (l<=r)) l=l+1;
 		if(l<r){
-			
+			swap(&A[l], &A[r]);
+			l++;
+			r--;
 		}
 	}
+	swap(&A[begin],&A[r]);
+	return r;
 }
 
 void quicksort(int* A, int begin, int end){
