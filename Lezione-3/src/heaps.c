@@ -35,7 +35,7 @@ void fixHeap(int* A, int i, int size) {
 }
 
 void heapify(int* A, int n) {
-	for(int i = (n/2); i >= 0; i+=1)
+	for(int i = (n/2); i >= 0; i-=1)
 		fixHeap(A, i, n);
 }
 
