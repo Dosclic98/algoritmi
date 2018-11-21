@@ -1,0 +1,7 @@
+Coda makeCoda {
+	Coda c;
+	c.primio = c.ultimo = NULL;
+	return c;
+} 
+
+E' sbagliata perchè ritorna qualcosa che viene subito dellocato.

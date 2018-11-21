@@ -1,6 +1,6 @@
 # File binari
-gioca
 test
+test.c
 *.o
 bin/
 build/
