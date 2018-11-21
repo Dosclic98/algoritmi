@@ -1,6 +1,3 @@
-<<<<<<< HEAD
- 
-=======
 #include <sys/time.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,4 +37,3 @@ void swap(int* a, int* b) {
 	*b = tmp;
 }
 
->>>>>>> origin/abr

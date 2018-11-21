@@ -12,14 +12,14 @@ void bubbleSort (int* A, int n){
 		for(int i=0; i<ultimoScambiato; i++){
 			if(A[i] > A[i+1]){
 				tmp = A[i];
-				A[i] = a[i+1];
+				A[i] = A[i+1];
 				A[i+1] = tmp;
 				
 				ultimoScambiatoTemp = i;
 				scambiati = 1;
 			}
 		}
-		ultimoscambiato = ultimoScambiatoTemp;
+		ultimoScambiato = ultimoScambiatoTemp;
 	}
 } 
 
