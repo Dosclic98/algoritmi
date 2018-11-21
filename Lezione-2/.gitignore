@@ -1,2 +1,6 @@
-# File binario
-gioca
+# File binari
+test
+test.c
+*.o
+bin/
+build/
