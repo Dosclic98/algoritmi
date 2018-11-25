@@ -1,21 +1,20 @@
 #include "sort.h" 
 #include "utils.h"
 #include <time.h>
+#include <locale.h>
 
-#define DIMENS 9
+#define SCL 1
+#define NUMERORUN 10
+clock_t T1, T2;
 
-int main(int argn, char** argv) {
-	int numeroRun = 10;
-	int dimensioni[DIMENS] = {5, 10, 25, 50, 100, 200, 500, 1000, 2000};
-	clock_t T1, T2;
-
-	for(int i=0; i < DIMENS; i+=1) {
-		int n = dimensioni[i];
+void bench(int begin, int end, int step,  FILE* f){
+	for(int i=begin; i <= end; i+=step) {
+		int n = i*SCL;
 		double timeBubble = 0;
 		double timeQuick = 0;
 		double timeHeap = 0;
 		
-		for(int k=1; k<=numeroRun; k++) {
+		for(int k=1; k<=NUMERORUN; k++) {
 			int* testArray = creaArrayRandom(n);
 			int* arrayDaOrdinare = copyArray(testArray, n);
 
@@ -49,8 +48,34 @@ int main(int argn, char** argv) {
 		 * da rivedere con calma */
 		printf(
 			"-----\ntimeBubble: %lf\ntimeQuick: %lf\ntimeHeap: %lf\n-----\n",
-			timeBubble/numeroRun,
-			timeQuick/numeroRun,
-			timeHeap/numeroRun);
+			timeBubble/NUMERORUN,
+			timeQuick/NUMERORUN,
+			timeHeap/NUMERORUN);
+		fprintf(f,"%d,%lf,%lf,%lf\n", n, timeBubble/NUMERORUN, timeQuick/NUMERORUN, timeHeap/NUMERORUN);
 	}
+	
 }
+
+int main(int argn, char** argv) {
+	FILE* f1 = fopen("table1.csv","w+");
+	if(f1==NULL){
+		printf("Errore apertura file\n");
+		exit(1);
+	}
+
+	FILE* f2 = fopen("table2.csv","w+");
+	if(f2==NULL){
+		printf("Errore apertura file\n");
+		exit(1);
+	}
+
+	fprintf(f1,"Dimensione,timeBubble,timeQuick,timeHeap\n");
+	fprintf(f2,"Dimensione,timeBubble,timeQuick,timeHeap\n");
+	
+	bench(5,25,1,f1);
+	bench(50,2000,250,f2);
+	
+	fclose(f1);
+	fclose(f2);
+}
+
