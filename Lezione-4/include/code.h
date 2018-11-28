@@ -7,7 +7,7 @@ typedef Nodo elem_t;
 
 typedef struct nc {
 	elem_t* elem;
-	NodoCoda* next;
+	struct nc * next;
 } NodoCoda;
 
 typedef struct coda {

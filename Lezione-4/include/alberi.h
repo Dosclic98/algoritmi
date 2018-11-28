@@ -1,3 +1,6 @@
+ #ifndef ALBERI_H
+ #define ALBERI_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -11,3 +14,5 @@ Nodo* makeTree(int n);
 void visita(Nodo* r);
 void visitaProf(Nodo* corr);
 void visitaAmp(Nodo* corr); 
+
+ #endif

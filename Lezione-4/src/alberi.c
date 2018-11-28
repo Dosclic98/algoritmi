@@ -1,4 +1,5 @@
 #include "alberi.h" 
+#include "code.h" 
 
 Nodo* makeNodo(int inf){
 	Nodo* newNode = malloc(sizeof(Nodo));
@@ -27,7 +28,21 @@ void visitaProf(Nodo* corr){
 	visitaProf(corr->sinistro);
 	visitaProf(corr->destro);
 }
-
+/*
+void visitaAmp(Nodo* corr){
+	Coda* C = nuovaCoda();
+	
+	enqueue(C,corr);
+	while(!codaVuota(C)){
+		Nodo* u = dequeue(C);
+		if(u != NULL){
+			visita(u);
+			enqueue(C,u->sinistro);
+			enqueue(C,u->destro);
+		}
+	}
+}
+*/
 void visita(Nodo* r){
 	printf("%d\n", r->inf);
 }
