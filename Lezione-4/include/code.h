@@ -15,6 +15,8 @@ typedef struct coda {
 	NodoCoda* ultimo; // ultimo inserito
 } Coda;
 
+Coda* nuovaCoda();
+void distruggiCoda(Coda* coda);
 void enqueue(Coda* coda, elem_t* elemento);
 elem_t* dequeue(Coda* coda);
 elem_t* primoCoda(Coda* coda);
