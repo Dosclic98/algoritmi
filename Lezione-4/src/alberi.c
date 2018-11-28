@@ -28,7 +28,7 @@ void visitaProf(Nodo* corr){
 	visitaProf(corr->sinistro);
 	visitaProf(corr->destro);
 }
-/*
+
 void visitaAmp(Nodo* corr){
 	Coda* C = nuovaCoda();
 	
@@ -42,7 +42,7 @@ void visitaAmp(Nodo* corr){
 		}
 	}
 }
-*/
+
 void visita(Nodo* r){
 	printf("%d\n", r->inf);
 }
