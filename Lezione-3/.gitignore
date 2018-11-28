@@ -1,0 +1,6 @@
+# File binari
+bin/test
+src/main/test.c
+*.o
+bin/
+build/
