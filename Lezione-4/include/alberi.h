@@ -13,6 +13,6 @@ Nodo* makeNodo(int inf);
 Nodo* makeTree(int n);
 void visita(Nodo* r);
 void visitaProf(Nodo* corr);
-void visitaAmp(Nodo* corr); 
+void visitaAmp(Nodo* corr);
 
  #endif

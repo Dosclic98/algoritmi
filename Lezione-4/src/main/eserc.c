@@ -37,17 +37,12 @@ int numFogliePari(Nodo* r){
 	return numFogliePari(r->destro) + numFogliePari(r->sinistro);	
 }
 // Non va
-void printFoglieLivPari(Nodo* r){
-	static int i = 0;
-	i++;
-	// printf("%d\n", i);
+void printFoglieLivPari(Nodo* r, int liv){
 	if(r == NULL) return;
-	if(((r->sinistro == NULL) && (r->destro == NULL)) && (i % 2 == 0)) printf("%d\n", r->inf);
+	if(((r->sinistro == NULL) && (r->destro == NULL)) && (liv % 2 == 0)) printf("%d\n", r->inf);
 	
-	printFoglieLivPari(r->sinistro);
-	i--;	
-	printFoglieLivPari(r->destro);
-	i--;
+	printFoglieLivPari(r->sinistro,liv+1);	
+	printFoglieLivPari(r->destro,liv+1);
 }
 
 int numNodi(Nodo* r){
@@ -101,6 +96,49 @@ bool isBigger(Nodo* r){
 	else return false;
 }
 
+int lessThan(Nodo* r, int x){
+	int cond = 0;
+	if(r==NULL) return 0;
+	if(r->inf <= x) cond++;
+	
+	return lessThan(r->sinistro, x) + lessThan(r->destro, x) + cond;
+	
+}
+
+bool isBelanced(Nodo* root){
+	if(root==NULL) return true;
+	
+	int hs = altezza(root->sinistro);
+	int hd = altezza(root->destro);
+	
+	if((hs-hs<=1 || hd-hs<=1) && isBelanced(root->sinistro) && isBelanced(root->destro)) return true;
+	else return false;
+}
+
+bool pariDis(Nodo* r){
+	bool cond;
+	if(r->sinistro!=NULL && r->destro!=NULL){
+		cond = (((r->sinistro->inf % 2) != 0) && ((r->destro->inf % 2) == 0));
+		puts("Cond 1");
+		return (pariDis(r->sinistro) && pariDis(r->destro) && cond);
+	}
+	else if(r->sinistro==NULL && r->destro!=NULL){
+		cond = (((r->destro->inf % 2) == 0));
+		puts("Cond 2");
+		return (pariDis(r->destro) && cond);
+	}
+	else if(r->sinistro!=NULL && r->destro==NULL){
+		cond = (((r->sinistro->inf % 2) != 0));
+		puts("Cond 3");
+		return (pariDis(r->sinistro) && cond);
+	}
+	else if(r->sinistro==NULL && r->destro==NULL){
+		puts("Cond 4");
+		return true;
+	}
+
+}
+
 int main(int argc,char* argv[]){
 	if(argc!=2){
 		printf("Prendo %s n\n", argv[0]);
@@ -109,8 +147,10 @@ int main(int argc,char* argv[]){
 	int n = atoi(argv[1]);
 	
 	Nodo* root = makeTree(n);
+
+	puts("Stampo albero profondità");
 	visitaProf(root);
-	puts("");
+	puts("Stampo albero ampiezza");
 	visitaAmp(root);
 	printf("L'altezza massima dell'albero è %d\n", altezza(root));
 	printf("L'altezza minima dell'albero è %d\n", altezzaMin(root));
@@ -129,5 +169,12 @@ int main(int argc,char* argv[]){
 	
 	printf("L'elemento più grande dell'albero e': %d\n", bigger(root));
 	printf("Stampo foglie pari\n");
-	printFoglieLivPari(root);
+	printFoglieLivPari(root,1);
+	printf("Ci sono %d numeri minori o uguali di %d\n", lessThan(root,83),83);
+	
+	if(isBelanced(root)) puts("Albero bilanciato");
+	else puts("Albero non bilanciato");
+	
+	if(pariDis(root)) puts("Rispetta consizione pari dispari");
+	else puts("Non rispetta consizione pari dispari");
 }
