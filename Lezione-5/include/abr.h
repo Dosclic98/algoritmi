@@ -15,7 +15,7 @@ typedef struct nodo {
  /* Inserisce nella posizione giusta un nodo con valore 'elem',
   * senza controllare se l'albero contiene gia' un nodo con
   * valore uguale. */
-void inserisciNodo(Nodo* radice, Nodo* elem);
+void inserisciNodo(Nodo** radice, Nodo* elem);
 
  /* Cerca nell'albero binario il nodo con valore 'elem', ritorna
   * il nodo trovato oppure NULL. */
