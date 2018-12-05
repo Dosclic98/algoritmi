@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "abr.h"
 
-#define MAX_EL 100
+#define MAX_EL 10000
 
 
 

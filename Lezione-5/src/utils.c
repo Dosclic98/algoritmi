@@ -8,7 +8,6 @@ int* creaArrayRandom(int dim) {
 		exit(1);
 	}
 
-	// srand(time(NULL));
 	for(int i=0; i < dim; i+=1){
 		arr[i] = rand() % MAX_EL;
 	}

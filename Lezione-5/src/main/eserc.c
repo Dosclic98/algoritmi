@@ -1,6 +1,6 @@
 #include <utils.h>
 #include <abr.h>
-
+#include <time.h>
 
 
 int main(int argc, char** args) {
@@ -11,7 +11,7 @@ int main(int argc, char** args) {
 	FILE* f2 = fopen("searchs.csv","wt");
 	fprintf(f1,"Dim,TempoAlbero,TempoArray\n");
 	fprintf(f2,"Dim,HitsAlbero,HitsArray\n");
-	
+	srand(time(NULL));
 	for(int i=0;i<8;i++){
 		int dimArray = dims[i];
 		double t1, t2;
@@ -27,11 +27,12 @@ int main(int argc, char** args) {
 		t2 = (double) timerValue();
 
 		fprintf(f1,"%d,%lf,%lf\n", dimArray, t1, t2);
-		/*
+		
 		fprintArray(stdout,array,dimArray);
 		printAlbero(radice);
-		*/
 		
+		
+		// Ricerche
 		int hitsArr = 0;
 		int hitsABR = 0;
 		for(int j=0;j<dimArray;j++){
