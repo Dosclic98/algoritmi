@@ -8,11 +8,31 @@ int* creaArrayRandom(int dim) {
 		exit(1);
 	}
 
-	srand(time(NULL));
+	// srand(time(NULL));
 	for(int i=0; i < dim; i+=1){
 		arr[i] = rand() % MAX_EL;
 	}
 	return arr;
+}
+
+int ricBin(int* array, int n, int x){
+	int hits=0;
+	int start = 0;
+	int middle;
+	int end = n;
+	
+	while(end>start){
+		hits++;
+		middle = (start+end)/2;
+		if(array[middle]==x) return hits;
+		if(array[middle] > x){
+			start = middle+1;
+		}
+		else{
+			end = middle;
+		}
+	}
+	return hits;
 }
 
 void fprintArray(FILE* f, int* A, int dim) {
