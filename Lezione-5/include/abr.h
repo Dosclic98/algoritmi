@@ -35,4 +35,7 @@ Nodo* creaAlbero(int* array, int n);
  /* Dealloca tutti gli elementi dell'albero */
 void distruggiAlbero(Nodo* radice);
 
+
+int cercaNodoHit(Nodo* radice, int elem);
+
  #endif

@@ -56,3 +56,23 @@ const int * cercaNodo(Nodo* radice, int elem) {
 		return cercaNodo(radice->destro, elem);
 	}
 }
+
+void cercaNodoHit_ric(Nodo* radice, int elem, int* hitPreced) {
+	*hitPreced += 1;
+
+	if((radice == NULL) || (elem == radice->inf))
+		return;
+
+	if(elem < radice->inf) {
+		cercaNodoHit_ric(radice->sinistro, elem, hitPreced);
+	}
+	else /* maggiore */ {
+		cercaNodoHit_ric(radice->destro, elem, hitPreced);
+	}
+}
+
+int cercaNodoHit(Nodo* radice, int elem) {
+	int hits = 0;
+	cercaNodoHit_ric(radice, elem, &hits);
+	return hits;
+}

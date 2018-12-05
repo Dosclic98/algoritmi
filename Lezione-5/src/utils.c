@@ -7,8 +7,8 @@ int* creaArrayRandom(int dim) {
 		printf("Errore allocazione array creazione\n");
 		exit(1);
 	}
-	
-	// srand(time(NULL));
+
+	srand(time(NULL));
 	for(int i=0; i < dim; i+=1){
 		arr[i] = rand() % MAX_EL;
 	}
@@ -34,10 +34,8 @@ void visita(Nodo* r){
 
 void printAlbero(Nodo* r){
 	if(r==NULL) return;
-	
+
 	printAlbero(r->sinistro);
 	visita(r);
 	printAlbero(r->destro);
 }
-
-
