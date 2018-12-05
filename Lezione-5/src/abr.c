@@ -49,7 +49,7 @@ const int * cercaNodo(Nodo* radice, int elem) {
 	if(elem == radice->inf) {
 		return &(radice->inf);
 	}
-	else if(elem < radice) {
+	else if(elem < radice->inf) {
 		return cercaNodo(radice->sinistro, elem);
 	}
 	else /* maggiore */ {

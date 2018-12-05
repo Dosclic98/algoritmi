@@ -1,5 +1,6 @@
 #include <stdlib.h>
-
+#include <stdio.h>
+#include "abr.h"
 #define MAX_EL 100
 
 int* creaArrayRandom(int dim);

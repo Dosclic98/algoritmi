@@ -7,7 +7,7 @@ void swap(int* a, int* b) {
 }
 
 int partition(int* A, int begin, int end) {
-	int pivot, l, r, random;
+	int pivot, l, r;
 
 	pivot = A[begin];
 	l = begin + 1;
