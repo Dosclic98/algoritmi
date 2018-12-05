@@ -9,16 +9,14 @@ Nodo* creaNodo(int inf) {
 	return newNode;
 }
 
-Nodo* creaAlbero(int n) {
-	return creaNodo();
-}
+Nodo* creaAlbero(int* array, int dim) {
+	Nodo* radice = NULL;
 
-Nodo* creaAlbero(int[] array) {
-	Nodo* radice = <nuovo_albero>;
-
-	for(int i=0; i < array.length; i+=1) {
-		inserisciNodo(radice, creaNodo(array[i]));
+	for(int i=0; i < dim; i+=1) {
+		inserisciNodo(&radice, creaNodo(array[i]));
 	}
+
+	return radice;
 }
 
 void inserisciNodo(Nodo** padre, Nodo* elem) {
@@ -32,6 +30,16 @@ void inserisciNodo(Nodo** padre, Nodo* elem) {
 	} else {
 		inserisciNodo(&((*padre)->destro), elem);
 	}
+}
+
+void distruggiAlbero(Nodo* radice) {
+	if(radice == NULL)
+		return;
+
+	distruggiAlbero(radice->sinistro);
+	distruggiAlbero(radice->destro);
+
+	free(radice);
 }
 
 const int * cercaNodo(Nodo* radice, int elem) {
