@@ -53,6 +53,9 @@ int main(int argc, char** args) {
 
 		printf("\nTEMPI: %lfs, %lfs\n----------------\n", t1, t2);
 		printf("\nHITS: %d, %d\n----------------\n", hitsArr, hitsABR);
+		free(array);
+		distruggiAlbero(radice);
+		
 	}
 	fclose(f1);
 	fclose(f2);
