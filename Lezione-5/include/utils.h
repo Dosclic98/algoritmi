@@ -8,6 +8,7 @@
 
 int* creaArrayRandom(int dim);
 void fprintArray(FILE* f, int* A, int dim);
+void fprintfArray(FILE* f, int* A, int dim, int maxLn);
 int ricBin(int* array, int n, int x);
 
 void printAlbero(Nodo* r);

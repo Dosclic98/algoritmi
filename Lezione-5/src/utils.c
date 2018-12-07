@@ -19,7 +19,7 @@ int ricBin(int* array, int n, int x){
 	int start = 0;
 	int middle;
 	int end = n;
-	
+
 	while(end>start){
 		hits++;
 		middle = (start+end)/2;
@@ -47,8 +47,40 @@ void fprintArray(FILE* f, int* A, int dim) {
 	printf("]\n");
 }
 
+void fprintfArray(FILE* file, int* array, int dim, int maxLn) {
+	if(dim <= 0) {
+		fprintf(file, "[]");
+		return;
+	}
+
+	fprintf(file, "[%-5d", array[0]);
+
+	int i = 1;
+	char sep;
+
+	dim -= 1; // per farlo finire 1 elemento prima
+
+	while(i < dim) {
+		if((i % maxLn) == 0)
+			sep = '\n';
+		else
+			sep = ' ';
+		fprintf(file, "%c %-5d", sep, array[i]);
+		i += 1;
+	}
+
+	if((i % maxLn) == 0)
+		sep = '\n';
+	else
+		sep = ' ';
+	fprintf(file, "%c %d]", sep, array[i]);
+
+	if((i % maxLn) != 0)
+		fprintf(file, "\n");
+}
+
 void visita(Nodo* r){
-	printf("%d\n", r->inf);
+	// printf("%d\n", r->inf);
 }
 
 void printAlbero(Nodo* r){
