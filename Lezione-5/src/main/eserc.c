@@ -48,14 +48,16 @@ int main(int argc, char** args) {
 		hitsABR = hitsABR/dimArray;
 		fprintf(f2,"%d,%d,%d\n", dimArray, hitsABR, hitsArr);
 
-
-		/*
-		printf("%d\n", ricBin(array,dimArray,83));
-		printf("%d\n", ricBin(array,dimArray,82));
-		*/
-
-		printf("\nTEMPI: %lfs, %lfs\n----------------\n", t1, t2);
-		printf("\nHITS: %d, %d\n----------------\n", hitsArr, hitsABR);
+		printf(
+				"\n"
+				"TEMPI di esecuzione medi delle funzioni di ordinamento:\n"
+				"\t%1.6lfs (ordinamento di array);\n"
+				"\t%1.6lfs (creazione dell'albero di ricerca)\n"
+				"\n", t1, t2);
+		printf(
+				"HIT medi delle funzioni di ricerca:\n"
+				"\t%-2d (ricerca binaria);\n"
+				"\t%-2d (ricerca nell'albero)\n", hitsArr, hitsABR);
 		free(array);
 		distruggiAlbero(radice);
 
