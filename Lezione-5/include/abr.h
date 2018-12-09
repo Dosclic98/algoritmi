@@ -35,7 +35,10 @@ Nodo* creaAlbero(int* array, int n);
  /* Dealloca tutti gli elementi dell'albero */
 void distruggiAlbero(Nodo* radice);
 
-
+/* Cerca all'interno dell'albero dato il nodo con campo
+ * informativo equivalente a 'elem', e ritorna il numero di
+ * passi necessari per trovarlo (che e' un numero asintotico
+ * al tempo di esecuzione della funzione stessa). */
 int cercaNodoHit(Nodo* radice, int elem);
 
  #endif
