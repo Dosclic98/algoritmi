@@ -79,14 +79,31 @@ void fprintfArray(FILE* file, int* array, int dim, int maxLn) {
 		fprintf(file, "\n");
 }
 
-void visita(Nodo* r){
-	printf("%d\n", r->inf);
+void visita(Nodo* r, int offset, bool newline) {
+	if(offset == 0) {
+		printf("%-5d", r->inf);
+	} else {
+		printf(" %-5d", r->inf);
+		if(newline) printf("\n");
+	}
 }
 
-void printAlbero(Nodo* r){
+void printAlbero_ric(Nodo* r, int* counter, int numsPerLine) {
 	if(r==NULL) return;
 
-	printAlbero(r->sinistro);
-	visita(r);
-	printAlbero(r->destro);
+	printAlbero_ric(r->sinistro, counter, numsPerLine);
+	visita(r, *counter, (*counter) % numsPerLine == 0);
+	(*counter) += 1;
+	printAlbero_ric(r->destro, counter, numsPerLine);
+}
+
+void printAlbero(Nodo* r, int numsPerLine) {
+	printf("{");
+
+	int prints = 0;
+	printAlbero_ric(r, &prints, numsPerLine);
+
+	printf("}");
+	if(prints % numsPerLine == 0)
+		printf("\n");
 }

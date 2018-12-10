@@ -7,7 +7,6 @@
 
 
 int main(int argc, char** args) {
-	//int dims[8] = {10,25,50,100,200,500,1000,2000};
 	int dims[8] = {10,25,50,100,200,500,1000,2000};
 
 	FILE* f1 = fopen("ords.csv","wt");
@@ -31,8 +30,10 @@ int main(int argc, char** args) {
 
 		fprintf(f1,"%d,%lf,%lf\n", dimArray, t1, t2);
 
+		printf("Array:\n");
 		fprintfArray(stdout, array, dimArray, NUMS_PER_LINE);
-		printAlbero(radice);
+		printf("\nAlbero:\n");
+		printAlbero(radice, NUMS_PER_LINE);
 		
 
 		// Ricerche

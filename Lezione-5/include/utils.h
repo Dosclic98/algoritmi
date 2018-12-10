@@ -3,6 +3,7 @@
 #include "abr.h"
 
 #define MAX_EL 10000
+#define TAB_VISITA ".  "
 
 
 
@@ -17,13 +18,12 @@ void fprintfArray(FILE* f, int* A, int dim, int maxLn);
 
 /* Cerca un elemento all'interno dell'array, e restituisce
  * il numero di divisioni effettuate (numero di cicli
- in "while(start<end)"). */
+ * in "while(start<end)"). */
 int ricBin(int* array, int n, int x);
 
 /* Effettua una visita in ordine a partire dalla radice 
- * passata come parametro (stampa l'albero in maniera ordinata) */
-void printAlbero(Nodo* r);
-void visita(Nodo* r);
+ * passata come parametro (stampa l'albero in maniera ordinata). */
+void printAlbero(Nodo* r, int numsPerLine);
 
 void swap(int* a, int* b);
 int partition(int* A, int begin, int end);
