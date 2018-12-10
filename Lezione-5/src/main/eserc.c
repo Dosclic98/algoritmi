@@ -54,11 +54,13 @@ int main(int argc, char** args) {
 				"TEMPI di esecuzione delle funzioni di ordinamento per dimensione %d:\n"
 				"\t%1.6lfs (ordinamento di array);\n"
 				"\t%1.6lfs (creazione dell'albero di ricerca)\n"
-				"\n", dimArray, t1, t2);
+				"\n", dimArray, t2, t1);
 		printf(
 				"HIT medi delle funzioni di ricerca:\n"
 				"\t%-2d (ricerca binaria);\n"
 				"\t%-2d (ricerca nell'albero)\n", hitsArr, hitsABR);
+				
+		printf("-----------------------------\n");
 		free(array);
 		distruggiAlbero(radice);
 
