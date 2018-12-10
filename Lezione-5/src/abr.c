@@ -86,8 +86,7 @@ void cercaNodoHit_ric(Nodo* radice, int elem, int* hitPreced) {
 
 /* Cerca all'interno dell'albero dato il nodo con campo
  * informativo equivalente a 'elem', e ritorna il numero di
- * passi necessari per trovarlo (che e' un numero asintotico
- * al tempo di esecuzione della funzione stessa). */
+ * passi necessari per trovarlo (nodi visitati). */
 int cercaNodoHit(Nodo* radice, int elem) {
 	int hits = 0;
 	cercaNodoHit_ric(radice, elem, &hits);

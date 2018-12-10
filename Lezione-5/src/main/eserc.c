@@ -33,7 +33,7 @@ int main(int argc, char** args) {
 
 		fprintfArray(stdout, array, dimArray, NUMS_PER_LINE);
 		printAlbero(radice);
-
+		
 
 		// Ricerche
 		int hitsArr = 0;
@@ -50,10 +50,10 @@ int main(int argc, char** args) {
 
 		printf(
 				"\n"
-				"TEMPI di esecuzione medi delle funzioni di ordinamento:\n"
+				"TEMPI di esecuzione delle funzioni di ordinamento per dimensione %d:\n"
 				"\t%1.6lfs (ordinamento di array);\n"
 				"\t%1.6lfs (creazione dell'albero di ricerca)\n"
-				"\n", t1, t2);
+				"\n", dimArray, t1, t2);
 		printf(
 				"HIT medi delle funzioni di ricerca:\n"
 				"\t%-2d (ricerca binaria);\n"

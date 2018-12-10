@@ -80,7 +80,7 @@ void fprintfArray(FILE* file, int* array, int dim, int maxLn) {
 }
 
 void visita(Nodo* r){
-	// printf("%d\n", r->inf);
+	printf("%d\n", r->inf);
 }
 
 void printAlbero(Nodo* r){
