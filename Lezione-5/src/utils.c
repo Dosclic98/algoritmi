@@ -19,7 +19,7 @@ int ricBin(int* array, int n, int x){
 	int start = 0;
 	int middle;
 	int end = n;
-	
+
 	while(end>start){
 		hits++;
 		middle = (start+end)/2;
@@ -47,14 +47,63 @@ void fprintArray(FILE* f, int* A, int dim) {
 	printf("]\n");
 }
 
-void visita(Nodo* r){
-	printf("%d\n", r->inf);
+void fprintfArray(FILE* file, int* array, int dim, int maxLn) {
+	if(dim <= 0) {
+		fprintf(file, "[]");
+		return;
+	}
+
+	fprintf(file, "[%-5d", array[0]);
+
+	int i = 1;
+	char sep;
+
+	dim -= 1; // per farlo finire 1 elemento prima
+
+	while(i < dim) {
+		if((i % maxLn) == 0)
+			sep = '\n';
+		else
+			sep = ' ';
+		fprintf(file, "%c %-5d", sep, array[i]);
+		i += 1;
+	}
+
+	if((i % maxLn) == 0)
+		sep = '\n';
+	else
+		sep = ' ';
+	fprintf(file, "%c %d]", sep, array[i]);
+
+	if((i % maxLn) != 0)
+		fprintf(file, "\n");
 }
 
-void printAlbero(Nodo* r){
+void visita(Nodo* r, int offset, bool newline) {
+	if(offset == 0) {
+		printf("%-5d", r->inf);
+	} else {
+		printf(" %-5d", r->inf);
+		if(newline) printf("\n");
+	}
+}
+
+void printAlbero_ric(Nodo* r, int* counter, int numsPerLine) {
 	if(r==NULL) return;
 
-	printAlbero(r->sinistro);
-	visita(r);
-	printAlbero(r->destro);
+	printAlbero_ric(r->sinistro, counter, numsPerLine);
+	visita(r, *counter, (*counter) % numsPerLine == 0);
+	(*counter) += 1;
+	printAlbero_ric(r->destro, counter, numsPerLine);
+}
+
+void printAlbero(Nodo* r, int numsPerLine) {
+	printf("{");
+
+	int prints = 0;
+	printAlbero_ric(r, &prints, numsPerLine);
+
+	printf("}");
+	if(prints % numsPerLine == 0)
+		printf("\n");
 }
