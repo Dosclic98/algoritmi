@@ -1,5 +1,4 @@
 #include "file.h"
-#include "hash.h"
 #include <string.h>
 #include <stdlib.h>
 
