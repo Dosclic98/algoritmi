@@ -2,8 +2,8 @@
 
 typedef struct bucket{
 	long int id;
-	char nome[40];
-	char cognome[40];
+	char* nome;
+	char* cognome;
 }bucket;
 
 int hashInsert(bucket* T[], bucket* e, int m);
