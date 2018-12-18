@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-typedef struct bucket{
+typedef struct{
 	long int id;
 	char* nome;
 	char* cognome;
