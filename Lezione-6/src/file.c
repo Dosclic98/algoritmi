@@ -1,11 +1,13 @@
 #include "file.h"
 #include "hash.h"
+#include <string.h>
+#include <stdlib.h>
 
 char* stringReader(FILE *stream) {
 	char* s = NULL;
 	size_t n = 0;
-	
-	getline(s, n, stream); 
+
+	getline(&s, &n, stream);
 	if(s==NULL){
 		free(s);
 		return NULL;
@@ -17,17 +19,17 @@ char* stringReader(FILE *stream) {
 bucket* bucketCreat(FILE* inp){
 	bucket* stud = malloc(sizeof(bucket));
 	fscanf(inp,"%ld\n",&(stud->id));
-	inp->nome = stringReader(inp);
-	if(inp->nome == NULL){
+	stud->nome = stringReader(inp);
+	if(stud->nome == NULL){
 		printf("Errore lettura Nome: info incomplete\n");
 		exit(1);
-	} 
+	}
 
-	inp->cognome = stringReader(inp);
-	if(inp->cognome == NULL){
+	stud->cognome = stringReader(inp);
+	if(stud->cognome == NULL){
 		printf("Errore lettura Cognome: info incomplete\n");
 		exit(1);
 	}
-	
+
 	return stud;
 }
