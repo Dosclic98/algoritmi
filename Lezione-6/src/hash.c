@@ -35,3 +35,15 @@ int h1(int k, int m){
 int h2(int k, int m){
 	return PRIME - (key % PRIME);
 }
+
+/* XORSHIFT con modulo
+int h2(int k, int mod) {
+	k ^= k << 13;
+	k ^= k >> 14;
+	k ^= k << 7;
+	k ^= k >> 10;
+	k ^= k << 3;
+	if(k < 0) k = -k;
+	return k % mod;
+}
+*/
