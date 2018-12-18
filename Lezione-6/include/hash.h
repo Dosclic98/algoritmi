@@ -1,10 +1,14 @@
 #include <stdbool.h>
 
-typedef struct bucket{
-	long int id;
+
+
+typedef long int id_t;
+
+typedef struct bucket {
+	id_t id;
 	char nome[40];
 	char cognome[40];
-}bucket;
+} bucket;
 
 int hashInsert(bucket* T[], bucket* e, int m);
 int hashSearch(bucket* T[], bucket* e, int m);
