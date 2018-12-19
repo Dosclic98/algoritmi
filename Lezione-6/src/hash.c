@@ -48,3 +48,23 @@ int xorshift(int k) {
 	if(k <= 0) k = 1-k;
 	return k;
 }
+
+static
+bool prime(int n) {
+	if(n == 2) return true;
+
+	int half = (n/2)+1;
+	for(int i=3; i < half; i+=1) {
+		if((n % i) == 0)
+			return false;
+	}
+	return true;
+}
+
+int findPrime(int n) {
+	for(int i=(n-1); i >= 0; i-=1) {
+		if(prime(i))
+			return i;
+	}
+	return 2;
+}

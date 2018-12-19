@@ -17,3 +17,4 @@ int h(int key, int i, hash_func hash1, hash_func hash2);
 int h2(int k);
 int h1(int k);
 int xorshift(int k);
+int findPrime(int upperBound);
