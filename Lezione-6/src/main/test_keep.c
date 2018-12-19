@@ -1,4 +1,3 @@
-// #include "hash.h"
 #include "file.h"
 #include <stdlib.h>
 
@@ -27,7 +26,10 @@ int main(int argc, char* argv[]){
 	// Ricerca
 	int hits = 0;
 	for(int i=0;i<n;i++){
-		hits += hashSearch(T,ids[i],m);
+		if(hashSearch(T,ids[i],m, &h) != -1) printf("Trovato\n");
+		else printf("Non Trovato\n");
 	}
+	hits = hits/n;
+	printf("hits medie: %d\n", hits);
 }
 
