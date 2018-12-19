@@ -16,10 +16,12 @@ int hashInsert(bucket* T[], bucket* e, int m){
 	return -1;
 }
 
-int hashSearch(bucket* T[], long int key, int m){
+int hashSearch(bucket* T[], long int key, int m, int* hits) {
 	int i=0;
 	int j=0;
+	hits = 0;
 	do{
+		hits += 1;
 		j = h(key,i,m);
 		if(T[j]->id == key) return j;
 		else i++;

@@ -9,7 +9,7 @@ typedef struct bucket {
 } bucket;
 
 int hashInsert(bucket* T[], bucket* e, int m);
-int hashSearch(bucket* T[], long int key, int m);
+int hashSearch(bucket* T[], long int key, int m, int* hitsReturn);
 int h(int key, int i, int mod);
 
 int h1(int k, int m);
