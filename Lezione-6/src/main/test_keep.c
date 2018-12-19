@@ -1,8 +1,10 @@
-//#include "hash.h"
+// #include "hash.h"
 #include "file.h"
 #include <stdlib.h>
 
-
+void printBucket(bucket* tmp){
+	printf("[%ld, %s, %s]\n", tmp->id, tmp->nome, tmp->cognome);
+}
 
 int main(int argc, char* argv[]){
 	const int n = 80;
@@ -21,9 +23,11 @@ int main(int argc, char* argv[]){
 		ids[i] = tmp->id;
 		hashInsert(T,tmp,m);
 	}
-
+	
+	// Ricerca
+	int hits = 0;
+	for(int i=0;i<n;i++){
+		hits += hashSearch(T,ids[i],m);
+	}
 }
 
-void printBucket(bucket* tmp){
-	printf("[%ld, %s, %s]\n", tmp->id, tmp->nome, tmp->cognome);
-}
