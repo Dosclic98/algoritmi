@@ -25,11 +25,14 @@ int main(int argc, char* argv[]){
 	
 	// Ricerca
 	int hits = 0;
+	int sumHits = 0;
 	for(int i=0;i<n;i++){
-		if(hashSearch(T,ids[i],m, &h) != -1) printf("Trovato\n");
-		else printf("Non Trovato\n");
+		if(hashSearch(T,ids[i],m, &hits) != -1) printf("Trovato %d ", i+1);
+		else printf("Non Trovato ");
+		sumHits+=hits;
+		printf("Hits %d\n", hits);
 	}
-	hits = hits/n;
-	printf("hits medie: %d\n", hits);
+	sumHits = sumHits/n;
+	printf("hits medie: %d\n", sumHits);
 }
 
