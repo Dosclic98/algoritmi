@@ -1,4 +1,4 @@
-CFLAGS=-std=c99 -Wall -I./include
+CFLAGS=-std=c99 -g -Wall -I./include
 ALL_MAIN_SRCS=$(patsubst src/main/%.c, bin/%, $(wildcard src/main/*.c))
 ALL_SRCS=$(wildcard src/*.c)
 ALL_OBJS=$(patsubst src/%.c, build/%.o, $(ALL_SRCS))

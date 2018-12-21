@@ -5,13 +5,11 @@ void printBucket(bucket* tmp){
 	printf("[%ld, %s, %s]\n", tmp->id, tmp->nome, tmp->cognome);
 }
 
-int main(int argc, char* argv[]){
-	const int n = 79;
-	const int m = 79;
+void test(const int m, FILE* out, FILE* inp){
+	const int n = 80;
 	bucket** T = malloc(m*sizeof(bucket*));
 	id_t* ids= malloc(n*sizeof(id_t));
-	FILE* inp = fopen("studenti.txt","r");
-
+	double avg = 0;
 	for(int j=0;j<m;j++){
 		T[j] = NULL;
 	}
@@ -32,7 +30,19 @@ int main(int argc, char* argv[]){
 		sumHits+=hits;
 		printf("Hits %d\n", hits);
 	}
-	sumHits = sumHits/n;
-	printf("hits medie: %d\n", sumHits);
+	avg = (double) sumHits/n;
+	fprintf(out,"%f,%lf\n", (float)n/(float)m, avg);
+	rewind(inp);
 }
 
+int main(int argc, char* argv[]){
+	FILE* out = fopen("output.txt","w");
+	FILE* inp = fopen("studenti.txt","r");
+	fprintf(out,"a,hitMedie\n");
+	int A[6] = {1000, 700, 500, 200, 100, 80};
+	for(int i=0;i<6;i++){
+		test(A[i],out,inp);
+	}
+	
+	fclose(out);
+}
