@@ -30,28 +30,12 @@ int hashSearch(bucket* T[], long int key, int m, int* hits) {
 }
 
 int h(int k, int i, int m){
-	return (h1(k,m) + i*h2(k,m)) % m;
+	return (h1(k,m) + i) % m;
 }
 
 int h1(int k, int m){
 	return (k % m);
 }
-
-int h2(int k, int m){
-	return 1 + (k % (m-1));
-}
-
- /*XORSHIFT con modulo
-int h2(int k, int mod) {
-	k ^= k << 13;
-	k ^= k >> 14;
-	k ^= k << 7;
-	k ^= k >> 10;
-	k ^= k << 3;
-	if(k < 0) k = -k;
-	return k % mod;
-}
-*/
 
 static
 bool prime(int n) {
