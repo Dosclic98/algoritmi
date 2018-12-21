@@ -38,7 +38,7 @@ int h1(int k, int m){
 }
 
 int h2(int k, int m){
-	return PRIME - (k % PRIME);
+	return 1 + (k % (m-1));
 }
 
  /*XORSHIFT con modulo

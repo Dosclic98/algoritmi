@@ -6,8 +6,8 @@ void printBucket(bucket* tmp){
 }
 
 int main(int argc, char* argv[]){
-	const int n = 80;
-	const int m = 86;
+	const int n = 79;
+	const int m = 79;
 	bucket** T = malloc(m*sizeof(bucket*));
 	id_t* ids= malloc(n*sizeof(id_t));
 	FILE* inp = fopen("studenti.txt","r");
@@ -15,12 +15,12 @@ int main(int argc, char* argv[]){
 	for(int j=0;j<m;j++){
 		T[j] = NULL;
 	}
-
 	for(int i=0;i<n;i++){
 		bucket* tmp = bucketCreat(inp);
 		printBucket(tmp);
 		ids[i] = tmp->id;
-		hashInsert(T,tmp,m);
+		int ins = hashInsert(T,tmp,m);
+		if(ins == -1) puts("Non inserito\n");
 	}
 	
 	// Ricerca
