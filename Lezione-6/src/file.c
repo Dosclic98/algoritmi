@@ -20,13 +20,13 @@ bucket* bucketCreat(FILE* inp) {
 	fscanf(inp, "%ld\n", &(stud->id));
 	stud->nome = stringReader(inp);
 	if(stud->nome == NULL){
-		printf("Errore lettura Nome: info incomplete (%ld)\n", stud->id);
+		fprintf(stderr, "Errore lettura Nome: info incomplete (%ld)\n", stud->id);
 		exit(1);
 	}
 
 	stud->cognome = stringReader(inp);
 	if(stud->cognome == NULL){
-		printf("Errore lettura Cognome: info incomplete (%ld)\n", stud->id);
+		fprintf(stderr, "Errore lettura Cognome: info incomplete (%ld)\n", stud->id);
 		exit(1);
 	}
 

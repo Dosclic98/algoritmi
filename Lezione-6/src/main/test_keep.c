@@ -34,8 +34,10 @@ void test(FILE* inp, FILE* out, int n, int m) {
 		sumHits += hits;
 		printf("Hits %d\n", hits);
 	}
+	
 	avg = (double) sumHits/n;
 	fprintf(out, "%f,%lf\n", (float)n/(float)m, avg);
+	printf(" Hit medie: %f\n", avg);
 	rewind(inp);
 }
 
