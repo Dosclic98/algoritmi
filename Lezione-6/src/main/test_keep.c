@@ -7,7 +7,7 @@ void printBucket(bucket* tmp){
 
 void test(FILE* inp, FILE* out, int n, int m) {
 	bucket** T = malloc(m*sizeof(bucket*));
-	id_t* ids= malloc(n*sizeof(id_t));
+	id_t* ids = malloc(n*sizeof(id_t));
 	double avg = 0;
 	for(int j=0; j<m; j++){
 		T[j] = NULL;
@@ -19,8 +19,10 @@ void test(FILE* inp, FILE* out, int n, int m) {
 		printBucket(tmp);
 		ids[i] = tmp->id;
 		int ins = hashInsert(T, tmp, m);
-		if(ins == -1)
+		if(ins == -1) {
+			destroyBucket(tmp);
 			puts("Non inserito\n");
+		}
 	}
 
 	// Ricerca
@@ -34,10 +36,14 @@ void test(FILE* inp, FILE* out, int n, int m) {
 		sumHits += hits;
 		printf("Hits %d\n", hits);
 	}
-	
+
 	avg = (double) sumHits/n;
 	fprintf(out, "%f,%lf\n", (float)n/(float)m, avg);
 	printf(" Hit medie: %f\n", avg);
+
+	destroyTable(T, m);
+	free(ids);
+	free(T);
 	rewind(inp);
 }
 
@@ -52,5 +58,6 @@ int main(int argc, char** argv) {
 		test(inp, out, n, m_array[i]);
 	}
 
+	fclose(inp);
 	fclose(out);
 }

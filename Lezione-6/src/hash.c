@@ -29,6 +29,21 @@ int hashSearch(bucket* T[], long int key, int m, int* hits) {
 	return -1;
 }
 
+void destroyBucket(bucket* bucket) {
+	printf("distrutto %ld, %s, %s\n", bucket->id, bucket->nome, bucket->cognome);
+	free(bucket->nome);
+	free(bucket->cognome);
+	free(bucket);
+}
+
+void destroyTable(bucket** table, size_t size) {
+	for(size_t i=0; i < size; i+=1) {
+		if(table[i] == NULL)
+			continue;
+		destroyBucket(table[i]);
+	}
+}
+
 int h(int k, int i, int m){
 	return (h1(k,m) + i) % m;
 }
