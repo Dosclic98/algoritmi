@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "hash.h"
 
 #define PRIME 73
@@ -29,18 +30,18 @@ int hashSearch(bucket* T[], long int key, int m, int* hits) {
 	return -1;
 }
 
-void destroyBucket(bucket* bucket) {
-	printf("distrutto %ld, %s, %s\n", bucket->id, bucket->nome, bucket->cognome);
-	free(bucket->nome);
-	free(bucket->cognome);
-	free(bucket);
+void destroyBucket(bucket* elem) {
+	printf("distrutto %ld, %s, %s\n", elem->id, elem->nome, elem->cognome);
+	free(elem->nome);
+	free(elem->cognome);
+	free(elem);
 }
 
 void destroyTable(bucket** table, size_t size) {
 	for(size_t i=0; i < size; i+=1) {
-		if(table[i] == NULL)
-			continue;
-		destroyBucket(table[i]);
+		if(table[i] != NULL){
+			destroyBucket(table[i]);
+		}
 	}
 }
 

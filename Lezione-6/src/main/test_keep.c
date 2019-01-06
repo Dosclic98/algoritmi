@@ -13,7 +13,7 @@ void test(FILE* inp, FILE* out, int n, int m) {
 		T[j] = NULL;
 	}
 
-	// Lettura - Inserzione
+	// Lettura - Inserimento
 	for(int i=0; i<n; i++){
 		bucket* tmp = bucketCreat(inp);
 		printBucket(tmp);
@@ -49,12 +49,13 @@ void test(FILE* inp, FILE* out, int n, int m) {
 
 int main(int argc, char** argv) {
 	FILE* inp = fopen("studenti.txt", "r");
-	FILE* out = fopen("output.txt", "w");
+	FILE* out = fopen("output.csv", "w");
 	fprintf(out, "a,hitMedie\n");
 
 	const int n = 80;
-	int m_array[6] = {880, 720, 560, 400, 240, 80};
-	for(int i=0; i<6; i++) {
+	// int m_array[6] = {160, 133, 114, 100, 88, 80};
+	int m_array[6] = {400, 200, 133, 100, 80};
+	for(int i=0; i<5; i++) {
 		test(inp, out, n, m_array[i]);
 	}
 
