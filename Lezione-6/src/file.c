@@ -15,18 +15,18 @@ char* stringReader(FILE *stream) {
 	return s;
 }
 
-bucket* bucketCreat(FILE* inp){
+bucket* bucketCreat(FILE* inp) {
 	bucket* stud = malloc(sizeof(bucket));
-	fscanf(inp,"%ld\n",&(stud->id));
+	fscanf(inp, "%ld\n", &(stud->id));
 	stud->nome = stringReader(inp);
 	if(stud->nome == NULL){
-		printf("Errore lettura Nome: info incomplete\n");
+		fprintf(stderr, "Errore lettura Nome: info incomplete (%ld)\n", stud->id);
 		exit(1);
 	}
 
 	stud->cognome = stringReader(inp);
 	if(stud->cognome == NULL){
-		printf("Errore lettura Cognome: info incomplete\n");
+		fprintf(stderr, "Errore lettura Cognome: info incomplete (%ld)\n", stud->id);
 		exit(1);
 	}
 

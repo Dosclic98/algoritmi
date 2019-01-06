@@ -5,44 +5,59 @@ void printBucket(bucket* tmp){
 	printf("[%ld, %s, %s]\n", tmp->id, tmp->nome, tmp->cognome);
 }
 
-void test(const int m, FILE* out, FILE* inp){
-	const int n = 80;
+void test(FILE* inp, FILE* out, int n, int m) {
 	bucket** T = malloc(m*sizeof(bucket*));
-	id_t* ids= malloc(n*sizeof(id_t));
+	id_t* ids = malloc(n*sizeof(id_t));
 	double avg = 0;
-	for(int j=0;j<m;j++){
+	for(int j=0; j<m; j++){
 		T[j] = NULL;
 	}
-	for(int i=0;i<n;i++){
+
+	// Lettura - Inserzione
+	for(int i=0; i<n; i++){
 		bucket* tmp = bucketCreat(inp);
 		printBucket(tmp);
 		ids[i] = tmp->id;
-		int ins = hashInsert(T,tmp,m);
-		if(ins == -1) puts("Non inserito\n");
+		int ins = hashInsert(T, tmp, m);
+		if(ins == -1) {
+			destroyBucket(tmp);
+			puts("Non inserito\n");
+		}
 	}
-	
+
 	// Ricerca
 	int hits = 0;
 	int sumHits = 0;
-	for(int i=0;i<n;i++){
-		if(hashSearch(T,ids[i],m, &hits) != -1) printf("Trovato %d ", i+1);
-		else printf("Non Trovato ");
-		sumHits+=hits;
+	for(int i=0; i<n; i++){
+		if(hashSearch(T, ids[i], m, &hits) != -1)
+			printf("Trovato %d ", i+1);
+		else
+			printf("Non Trovato ");
+		sumHits += hits;
 		printf("Hits %d\n", hits);
 	}
-	avg = (double) sumHits/n;
-	fprintf(out,"%f,%lf\n", (float)n/(float)m, avg);
+
+	avg = (double)sumHits/(double)n;
+	fprintf(out, "%f,%lf\n", (float)n/(float)m, avg);
+	printf(" Hit medie: %f\n", avg);
+
+	destroyTable(T, m);
+	free(ids);
+	free(T);
 	rewind(inp);
 }
 
-int main(int argc, char* argv[]){
-	FILE* out = fopen("output.txt","w");
-	FILE* inp = fopen("studenti.txt","r");
-	fprintf(out,"a,hitMedie\n");
-	int A[6] = {1000, 700, 500, 200, 100, 80};
-	for(int i=0;i<6;i++){
-		test(A[i],out,inp);
+int main(int argc, char** argv) {
+	FILE* inp = fopen("studenti.txt", "r");
+	FILE* out = fopen("output.txt", "w");
+	fprintf(out, "a,hitMedie\n");
+
+	const int n = 80;
+	int m_array[6] = {880, 720, 560, 400, 240, 80};
+	for(int i=0; i<6; i++) {
+		test(inp, out, n, m_array[i]);
 	}
-	
+
+	fclose(inp);
 	fclose(out);
 }

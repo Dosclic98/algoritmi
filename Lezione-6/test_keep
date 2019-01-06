@@ -1,0 +1,1 @@
+rm -rf bin build && reset && make bin/test_keep && bin/test_keep $*
