@@ -16,4 +16,3 @@ void destroyTable(bucket** table, size_t size);
 int h(int key, int i, int mod);
 
 int h1(int k, int m);
-int findPrime(int upperBound);

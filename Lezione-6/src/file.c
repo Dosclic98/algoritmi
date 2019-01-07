@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*legge una stringa da file attraverso la getline*/
 char* stringReader(FILE *stream) {
 	char* s = NULL;
 	size_t n = 0;
@@ -15,6 +16,7 @@ char* stringReader(FILE *stream) {
 	return s;
 }
 
+/*ritorna un bucket* inizializzato ai valori letti da file*/
 bucket* bucketCreat(FILE* inp) {
 	bucket* stud = malloc(sizeof(bucket));
 	fscanf(inp, "%ld\n", &(stud->id));
